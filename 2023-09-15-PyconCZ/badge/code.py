@@ -6,9 +6,10 @@ from adafruit_bitmap_font import bitmap_font
 
 import gc
 
+# minimum display refresh time (seconds)
+ttr = 40
 
-
-(display, touch, led_matrix, colors) = setup()
+(display, touch, led_matrix, colors) = setup(time_to_refresh=ttr)
 
 
 wb_palette = displayio.Palette(2)
@@ -46,12 +47,12 @@ def make_slide1():
     slide = displayio.Group()
 
     qr_bitmap = qr_gen("cislo_ticketu")
-    scale = int(display.height / qr_bitmap.height)
+    scale = display.height // qr_bitmap.height
     tile = displayio.TileGrid(qr_bitmap, pixel_shader=wb_palette)
 
     code_group = displayio.Group(
-        x=int((display.width - qr_bitmap.width*scale) / 2),
-        y=int((display.height - qr_bitmap.height*scale) / 2),
+        x=(display.width - qr_bitmap.width*scale) // 2,
+        y=(display.height - qr_bitmap.height*scale) // 2,
         scale=scale
     )
     code_group.append(tile)
@@ -115,16 +116,18 @@ def make_slide3():
         display.refresh()
 
 # display remaing time to refresh on the LED matrix
-# each LED represents 45 seconds
+# each LED represents 45 seconds (when time to refresh = 180s)
 
 def time_to_refresh():
     led_matrix.fill(colors['red'])
     t = display.time_to_refresh
-    if t < 135:
+    q = ttr // 4
+    
+    if t < 3*q:
         led_matrix[0] = colors['black']
-    if t < 90:
+    if t < 2*q:
         led_matrix[1] = colors['black']
-    if t < 45:
+    if t < q:
         led_matrix[2] = colors['black']
 
     led_matrix.show()
