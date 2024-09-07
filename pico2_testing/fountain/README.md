@@ -7,6 +7,9 @@ It turned out that the bottle neck is mainly transferring data from the buffer t
 
 The programs were compiled using PicoSDK 2.0.1.
 
+![pico2-test](https://github.com/user-attachments/assets/de00a85d-a96f-46b8-8e89-856f300ebdda)
+
+
 ## Main test
 
 ### RP2350 ARM
@@ -21,6 +24,13 @@ The programs were compiled using PicoSDK 2.0.1.
 | 154 MHz | 77 MHz | 126 ms | 0 ms | 126 ms | 8 FPS
 | 308 MHz | 77 MHz | 64 ms | 0 ms | 64 ms | 15.7 FPS
 
+### Main test video
+
+
+https://github.com/user-attachments/assets/68fb52e4-c0eb-4cbb-856a-d49dd7a48465
+
+
+
 ## Simple test
 
 | TEST | FPS |
@@ -29,7 +39,10 @@ The programs were compiled using PicoSDK 2.0.1.
 | RP2350 ARM | 20.8 FPS |
 | RP2350 RISC-V SDK2.0| 3.8 FPS |
 | RP2350 RISC-V SDK2.0.1| 6 FPS |
-| CircuitPython 9.2 alfa|1.2 FPS |
-| CircuitPython 9.2 alfa @348MHz |2.9 FPS |
+| CircuitPython 9.2 alfa| 1.2 FPS |
+| CircuitPython 9.2 alfa @348MHz | 2.9 FPS |
 
+### Simple test video:
+
+https://github.com/user-attachments/assets/289f5c20-518e-4ddc-b35e-42b3454cad35
 
